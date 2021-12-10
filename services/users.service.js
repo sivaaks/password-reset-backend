@@ -22,13 +22,8 @@ const service={
        //encrypt password
         const salt= await bcrypt.genSalt();
         value.password= await bcrypt.hash(value.password,salt);
-        const data= await db.users.insertOne({...value,verified:false,createdAt:dateTime,verifyToken});
+        const data= await db.users.insertOne({...value,verified:true,createdAt:dateTime});
         res.status(200).send(data);
-        //send mail for verification
-        await service.sendVerificationEmail(value.email,verifyToken);
-        // const verifyLink=`http://localhost:3001/verify/${verifyToken}`;
-        // const mailRes= await sendMail(value.email,'Verify your email address','',`<a href=${verifyLink}>Click on this link to verify your email address</a>`);
-        // console.log(mailRes);
         } catch(err){
             console.log(`Error in register : ${err}`);
         }
@@ -136,16 +131,8 @@ const service={
         }
     },
 
-    async sendVerificationEmail(to,token){
-        const verifyLink=`https://siva-url-shortner.herokuapp.com/users/verify/${token}`;
-        const mailRes= await sendMail(to,'Verify your email address','',`
-        <h2>Verify your email address by clicking on the link below</h2><br/>
-        <a href=${verifyLink}>Click on this link to verify your email address</a>`);
-        console.log(mailRes);
-    },
-
     async sendForgotPasswordEmail(to,token){
-        const verifyLink=`https://siva-url-shortner.herokuapp.com/users/reset-password/${token}`;
+        const verifyLink=`https://siva-password-reset.herokuapp.com/users/reset-password/${token}`;
         const mailRes= await sendMail(to,'Reset password','',`
         <h2>Reset your password by clicking on the link below</h2><br/>
         <a href=${verifyLink}>Click on this link to reset your password</a>`);

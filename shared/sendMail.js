@@ -1,5 +1,5 @@
 const nodeMailer= require('nodemailer');
-const FROM_MAIL='diarymanagerr@gmail.com';
+const FROM_MAIL='projectnotifications.email@gmail.com';
 const SMTP_HOST='smtp.gmail.com';
 const SMTP_PORT=465;
 
@@ -12,7 +12,7 @@ async function sendMail(to,subject,text,html){
         secure:true,
         auth:{
             user:FROM_MAIL,
-            pass:'4DiaryManagerr@',
+            pass:'4Email@1',
         },
     });
     let mail= transport.sendMail({
