@@ -1,1 +1,1 @@
-# URL Shortner backend deployed URL : https://diary-manager-backend.herokuapp.com/
+# Password reset backend deployed URL : https://siva-password-reset.herokuapp.com/
