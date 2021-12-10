@@ -1,5 +1,5 @@
 {
-  "name": "url-shortner",
+  "name": "password-reset",
   "version": "1.0.0",
   "engines": {
     "node": "14.15.4"
