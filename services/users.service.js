@@ -132,7 +132,7 @@ const service={
     },
 
     async sendForgotPasswordEmail(to,token){
-        const verifyLink=`https://siva-password-reset.herokuapp.com/users/reset-password/${token}`;
+        const verifyLink=`https://siva-password-reset.netlify.app/reset-password/${token}`;
         const mailRes= await sendMail(to,'Reset password','',`
         <h2>Reset your password by clicking on the link below</h2><br/>
         <a href=${verifyLink}>Click on this link to reset your password</a>`);
